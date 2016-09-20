@@ -1,0 +1,33 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 3% 2%;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1em;
+  margin: 3% 2%;
+}
+
+p {
+  width: 80%;
+  margin: 0 auto;
+}
+
+img {
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
