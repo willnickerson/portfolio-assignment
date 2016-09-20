@@ -1,5 +1,5 @@
 .container {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -10,15 +10,20 @@ a {
 
 h1 {
   font-size: 2em;
-  margin: 3% 2%;
+  margin-left: 3%;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 h2 {
   font-size: 1.5em;
+  margin-left: 3%;
 }
 h3 {
   font-size: 1em;
-  margin: 3% 2%;
+  margin-left: 5%;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 p {
