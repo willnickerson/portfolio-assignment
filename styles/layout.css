@@ -9,8 +9,18 @@ header {
   clear: both;
 }
 
-/*.clearfix::after {
+.template {
+  display: none;
+}
+
+img.project-img {
+  width: 25%;
+  height: 25%;
+}
+
+
+.clearfix::after {
   content: "";
   display: table;
   clear: both;
-}*/
+}
