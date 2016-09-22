@@ -51,7 +51,7 @@ nav ul li {
   nav ul {
     display: block;
     margin: 0 auto;
-    width: 60%;
+    width: 80%;
     padding-top: 1%
   }
 
@@ -59,6 +59,6 @@ nav ul li {
     display: inline-block;
     text-align: center;
     margin-left: 0;
-    width: 32%
+    width: 18.5%
   }
 }
