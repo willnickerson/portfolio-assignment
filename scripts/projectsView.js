@@ -16,14 +16,11 @@ projectView.preview = function() {
   $('.project-description *:nth-of-type(n+2)').hide();
   $('a.read-more').on('click', function(e) {
     e.preventDefault();
-    if($(this).has('.show-less')) {
-      $(this).prev().find('p').show();
-      $(this).text('Show less');
-      $(this).removeClass('read-more');
-      $(this).addClass('show-less');
-    } else {
-      console.log('show-less');
-    }
+    $(this).prev().find('p').show();
+    $(this).text('Show less');
+    $(this).removeClass('read-more');
+    $(this).addClass('show-less');
+  //TODO add code for show-less  
   });
 };
 
