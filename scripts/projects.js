@@ -26,7 +26,7 @@ Project.prototype.toHtml = function () {
 
   //removing template class so that project will display
   $newProject.removeClass('template');
-
+  $newProject.addClass('project-info');
   return $newProject;
 };
 
