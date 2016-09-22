@@ -8,7 +8,28 @@
     <link rel="stylesheet" href="styles/module.css">
     <link rel="stylesheet" href="styles/icons.css">
     <title>Will's Portfolio</title>
+
+    <!-- Template for projects -->
+    <script id="project-template" type="text/x-handlebars-template">
+      <article data-category="{{category}}" data-importance="{{importance}}">
+        <h4><a href="{{projectUrl}}">{{title}}</a></h4>
+        <div class="by-line">
+          <h5>{{authors}}</h5>
+        </div>
+          <img class="project-img" src="{{img}}">
+          <section class="project-description">
+            {{{description}}}
+          </section>
+        <a class="read-more" href="#">Read more &rarr;</a>
+      </article>
+    </script>
+
+    <!-- template for filter menu -->
+    <script id="filter-options" type="text/x-handlebars-template">
+      <option value="{{category}}">{{category}}</option>
+    </script>
   </head>
+
   <body>
     <div class="container">
       <header class="clearfix">
@@ -16,33 +37,25 @@
           <h1>Will Nickerson</h1>
           <h3>Multi-media Guru</h3>
         </div>
-          <nav>
-            <div class="icon-menu">
-            </div>
-            <ul>
-              <li class="nav-tab" data-type="projects"><a href="#">Projects</a></li>
-              <li class="nav-tab" data-type="about"><a href="#">About</a></li>
-              <li class="nav-link"><a href="https://github.com/willnickerson" class="icon-github">Github</a></li>
-              <li class="nav-link"><a href="https://www.linkedin.com/in/william-nickerson-439976103?trk=hp-identity-name" class="icon-linkedin">Linkedin</a></li>
-              <li class="nav-link"><a href="https://soundcloud.com/will_pancake" class="icon-soundcloud">Soundcloud</a></li>
-            </ul>
-          </nav>
-        </header>
-        <main>
-          <img src="imgs/portfolio_picture.jpg" class="hero">
-          <section id="projects" class="main-content">
+        <nav>
+          <div class="icon-menu">
+          </div>
+          <ul>
+            <li class="nav-tab" data-type="projects"><a href="#">Projects</a></li>
+            <li class="nav-tab" data-type="about"><a href="#">About</a></li>
+            <li class="nav-link"><a href="https://github.com/willnickerson" class="icon-github">Github</a></li>
+            <li class="nav-link"><a href="https://www.linkedin.com/in/william-nickerson-439976103?trk=hp-identity-name" class="icon-linkedin">Linkedin</a></li>
+            <li class="nav-link"><a href="https://soundcloud.com/will_pancake" class="icon-soundcloud">Soundcloud</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <img src="imgs/portfolio_picture.jpg" class="hero">
+        <section id="projects" class="main-content">
           <h2>Projects</h2>
-          <article class="template">
-            <h4><a href="#">Project Title</a></h4>
-            <div class="by-line">
-              <h5>By Author Name</h5>
-            </div>
-              <img class="project-img">
-              <section class="project-description">
-                About the project
-              </section>
-            <a class="read-more" href="#">Read more</a>
-          </article>
+            <select id="filter">
+              <option>Filter by category</option>
+            </select>
         </section>
         <section id="about" class="main-content">
           <h2>About</h2>
@@ -50,6 +63,7 @@
         </section>
       </main>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
     <script type="text/javascript" src="vendor/scripts/jquery-3.1.0.js"></script>
     <script type="text/javascript" src="scripts/projectsSource.js"></script>
     <script type="text/javascript" src="scripts/projects.js"></script>
