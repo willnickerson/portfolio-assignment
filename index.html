@@ -11,7 +11,7 @@
 
     <!-- Template for projects -->
     <script id="project-template" type="text/x-handlebars-template">
-      <article data-category="{{category}}" data-importance="{{importance}}">
+      <article class="project-article" data-category="{{category}}" data-importance="{{importance}}">
         <h4><a href="{{projectUrl}}">{{title}}</a></h4>
         <div class="by-line">
           <h5>{{authors}}</h5>
@@ -54,7 +54,7 @@
         <section id="projects" class="main-content">
           <h2>Projects</h2>
             <select id="filter">
-              <option>Filter by category</option>
+              <option value="">Filter by category</option>
             </select>
         </section>
         <section id="about" class="main-content">
