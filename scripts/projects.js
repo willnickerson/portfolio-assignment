@@ -12,37 +12,36 @@ function Project(opts) {
   this.description = opts.description;
 }
 
-//This function will take a Project object, convert it to Html and append it to the projects section of our page.
+//This function will take a Project object, convert it to Html using handlebars so that it can be appened to the projects section of our page.
+
 Project.prototype.toHtml = function () {
-  //cloning template article and converting to jQuery object.
-  var $newProject = $('article.template').clone();
-
-  //assigning Project attributes to their corresponing html elements in our cloned template.
-  $newProject.attr('data-category', this.category);
-  $newProject.find('h4 a').text(this.title).attr('href', this.projectUrl);
-  $newProject.find('h5').text('By ' + this.authors);
-  $newProject.find('img.project-img').attr('src', this.img);
-  $newProject.find('section.project-description').html(this.description);
-
-  //removing template class so that project will display
-  $newProject.removeClass('template');
-  $newProject.addClass('project-info');
-  return $newProject;
+  var source = $('#project-template').html();
+  var template = Handlebars.compile(source);
+  var html = template(this);
+  return html;
 };
 
-//TODO make function to sort projects in order of importance
+Project.prototype.toFilter = function() {
+  var source = $('#filter-options').html();
+  var template = Handlebars.compile(source);
+  var html = template(this);
+  return html;
+};
 
+//this sorts the projects by their importance attributes
 userData.sort(function(currentElement, nextElement) {
   return currentElement.importance - nextElement.importance;
 });
-//using the objects form the array in projectsSource to populate our projects array with new Project objects.
 
+//using the objects form the array in projectsSource to populate our projects array with new Project objects.
 userData.forEach(function(p) {
   projects.push(new Project(p));
 });
 
 //taking the elements from our newly populated projects array and converting them to html and appending them to the section with id="projects"
-
 projects.forEach(function(project){
   $('#projects').append(project.toHtml());
+  if($('#filter option[value="' + project.category + '"]').length === 0) {
+    $('#filter').append(project.toFilter());
+  };
 });
