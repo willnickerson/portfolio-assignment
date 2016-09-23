@@ -4,12 +4,9 @@ var projects = [];
 
 //Constructor function for Projects objects. Takes an object from userData array and makes it into new Project.
 function Project(opts) {
-  this.title = opts.title;
-  this.category = opts.category;
-  this.authors = opts.authors;
-  this.projectUrl = opts.projectUrl;
-  this.img = opts.img;
-  this.description = opts.description;
+  for (var key in opts) {
+    this[key] = opts[key];
+  }
 }
 
 //This function will take a Project object, convert it to Html using handlebars so that it can be appened to the projects section of our page.
@@ -41,7 +38,11 @@ userData.forEach(function(p) {
 //taking the elements from our newly populated projects array and converting them to html and appending them to the section with id="projects"
 projects.forEach(function(project){
   $('#projects').append(project.toHtml());
+  // WILL ONLY POPULATE IF EMPTY
   if($('#filter option[value="' + project.category + '"]').length === 0) {
     $('#filter').append(project.toFilter());
   };
 });
+
+// When we have articles being added dynamically to the page, we will need to
+// make a new function to populate the filters.

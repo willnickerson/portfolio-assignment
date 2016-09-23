@@ -13,9 +13,8 @@ nav ul {
   list-style-type: none;
   clear: both;
   padding-left: 0;
-  margin: 0;
+  margin: 0
 }
-
 
 nav:hover ul {
   display: block;
