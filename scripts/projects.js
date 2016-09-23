@@ -4,12 +4,9 @@ var projects = [];
 
 //Constructor function for Projects objects. Takes an object from userData array and makes it into new Project.
 function Project(opts) {
-  this.title = opts.title;
-  this.category = opts.category;
-  this.authors = opts.authors;
-  this.projectUrl = opts.projectUrl;
-  this.img = opts.img;
-  this.description = opts.description;
+  for (var key in opts) {
+    this[key] = opts[key];
+  }
 }
 
 //This function will take a Project object, convert it to Html using handlebars so that it can be appened to the projects section of our page.
