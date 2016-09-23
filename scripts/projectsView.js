@@ -18,6 +18,9 @@ projectView.handleFilter = function() {
     if($(this).val()) {
       $('.project-article').fadeOut(500);
       $('article[data-category="' + $(this).val() + '"]').fadeIn(500);
+    } else {
+      // TODO: Check why fadeOut seems to be skipped
+      $('.project-article').fadeOut(500).fadeIn(500);
     }
   });
 };
