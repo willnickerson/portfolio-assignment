@@ -41,7 +41,11 @@ userData.forEach(function(p) {
 //taking the elements from our newly populated projects array and converting them to html and appending them to the section with id="projects"
 projects.forEach(function(project){
   $('#projects').append(project.toHtml());
+  // WILL ONLY POPULATE IF EMPTY
   if($('#filter option[value="' + project.category + '"]').length === 0) {
     $('#filter').append(project.toFilter());
   };
 });
+
+// When we have articles being added dynamically to the page, we will need to
+// make a new function to populate the filters.
