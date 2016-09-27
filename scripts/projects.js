@@ -1,6 +1,6 @@
 'use strict';
 //This array will store our project objects.
-var projects = [];
+// var projects = [];
 
 //Constructor function for Projects objects. Takes an object from userData array and makes it into new Project.
 function Project(opts) {
@@ -8,6 +8,8 @@ function Project(opts) {
     this[key] = opts[key];
   }
 }
+
+Project.all = [];
 
 //This function will take a Project object, convert it to Html using handlebars so that it can be appened to the projects section of our page.
 
@@ -25,24 +27,47 @@ Project.prototype.toFilter = function() {
   return html;
 };
 
-//this sorts the projects by their importance attributes
-userData.sort(function(currentElement, nextElement) {
-  return currentElement.importance - nextElement.importance;
-});
+Project.loadAll = function(passedData) {
+  //this sorts the projects by their importance attributes and then pushes them to Project.all array.
+  passedData.sort(function(currentElement, nextElement) {
+    return currentElement.importance - nextElement.importance;
+  }).forEach(function(p) {
+    Project.all.push(new Project(p));
+  });
+};
 
-//using the objects form the array in projectsSource to populate our projects array with new Project objects.
-userData.forEach(function(p) {
-  projects.push(new Project(p));
-});
-
-//taking the elements from our newly populated projects array and converting them to html and appending them to the section with id="projects"
-projects.forEach(function(project){
-  $('#projects').append(project.toHtml());
-  // WILL ONLY POPULATE IF EMPTY
-  if($('#filter option[value="' + project.category + '"]').length === 0) {
-    $('#filter').append(project.toFilter());
-  };
-});
-
-// When we have articles being added dynamically to the page, we will need to
-// make a new function to populate the filters.
+//This function will retrieve data from local storage or the json file and render it to index.html
+Project.retrieveAll = function() {
+  if(localStorage.projects) {
+    //If there are projects saved in local storage retrieve them, then parse them and render to page.
+    console.log('we found stuff');
+    var retrievedProjects = localStorage.getItem('projects');
+    var parsedProjects = JSON.parse(retrievedProjects);
+    console.log(parsedProjects);
+    Project.loadAll(parsedProjects);
+    projectView.renderToIndex();
+  } else {
+    //take proejects from projects.json, append them to page and add them to local storage
+    $.ajax('data/projects.json', {
+      method: 'GET',
+      success: successHandler,
+      error: errorHandler
+    });
+    function successHandler(data, textStatus, request) {
+      //take the data from json file and load to Project.all then render Project.all to index.html
+      Project.loadAll(data);
+      projectView.renderToIndex();
+      //stringify data from JSON file and add to local storage
+      var projectsString = JSON.stringify(data);
+      localStorage.setItem('projects', projectsString);
+      // addapted from http://stackoverflow.com/questions/1557602/jquery-and-ajax-response-header
+      var eTag = request.getResponseHeader('Etag');
+      var eTagString = JSON.stringify(eTag);
+      console.log(eTagString);
+      localStorage.setItem('lastEtag', eTagString);
+    };
+    function errorHandler(error) {
+      console.log('ERROR', error);
+    };
+  }
+};

@@ -48,7 +48,18 @@ projectView.preview = function() {
   });
 };
 
+projectView.renderToIndex = function() {
+  //taking the elements from our newly populated Project.all array and converting them to html and appending them to the section with id="projects"
+  Project.all.forEach(function(project){
+    $('#projects').append(project.toHtml());
+    if($('#filter option[value="' + project.category + '"]').length === 0) {
+      $('#filter').append(project.toFilter());
+    };
+  });
+  projectView.handleNav();
+  projectView.handleFilter();
+  projectView.preview();
+};
 
-projectView.handleNav();
-projectView.handleFilter();
-projectView.preview();
+//We will asynchronously render all the articles to index by calling the retrieveAll function here.
+Project.retrieveAll();
