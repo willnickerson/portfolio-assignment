@@ -56,13 +56,18 @@ Project.retrieveAll = function() {
       success: successHandler,
       error: errorHandler
     });
-    function successHandler(data) {
+    function successHandler(data, textStatus, request) {
       //take the data from json file and load to Project.all then render Project.all to index.html
       Project.loadAll(data);
       projectView.renderToIndex();
       //stringify data from JSON file and add to local storage
       var projectsString = JSON.stringify(data);
       localStorage.setItem('projects', projectsString);
+      // addapted from http://stackoverflow.com/questions/1557602/jquery-and-ajax-response-header
+      var eTag = request.getResponseHeader('Etag');
+      var eTagString = JSON.stringify(eTag);
+      console.log(eTagString);
+      localStorage.setItem('lastEtag', eTagString);
     };
     function errorHandler(error) {
       console.log('ERROR', error);
