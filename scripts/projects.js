@@ -40,6 +40,19 @@ Project.loadAll = function(passedData) {
 Project.retrieveAll = function() {
   if(localStorage.projects) {
     //If there are projects saved in local storage retrieve them, then parse them and render to page.
+
+    // Template for checking if mods have been made to Json file
+    // $.ajax({
+    //   type: 'HEAD',
+    //   url: 'data/projects.json',
+    //   success: function(data, messagem, xhr) {
+    //     var eTag = xhr.getResponseHeader('Etag');
+    //     if (!localStorage.eTag || etag !== localStorage.eTag) {
+    //       localStorage.eTag = eTag;
+    //     }
+    //   }
+    // });
+
     console.log('we found stuff');
     var retrievedProjects = localStorage.getItem('projects');
     var parsedProjects = JSON.parse(retrievedProjects);
