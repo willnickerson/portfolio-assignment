@@ -51,24 +51,30 @@ projectView.preview = function() {
 projectView.renderToIndex = function() {
   //taking the elements from our newly populated Project.all array and converting them to html and appending them to the section with id="projects"
 
+  // Project.all.forEach(function(project){
+  //   $('#projects').append(project.toHtml());
+  // });
+  //
+  // // Loading filter option to filter. This really looks like a huge mess in comparison to the last version but it makes use of the functional array methods
+  // Project.all.map(function(project) {
+  //   return project.category;
+  // }).reduce(function(acc, curr) {
+  //   if(acc.indexOf(curr) === -1) {
+  //     acc[acc.length] = curr;
+  //   }
+  //   return acc;
+  // }, []).map(function(opts) {
+  //   var project = new Project;
+  //   project.category = opts;
+  //   return project;
+  // }).map(function(filterOption) {
+  //   $('#filter').append(filterOption.toFilter());
+  // });
   Project.all.forEach(function(project){
     $('#projects').append(project.toHtml());
-  });
-
-  // Loading filter option to filter. This really looks like a huge mess in comparison to the last version but it makes use of the functional array methods
-  Project.all.map(function(project) {
-    return project.category;
-  }).reduce(function(acc, curr) {
-    if(acc.indexOf(curr) === -1) {
-      acc[acc.length] = curr;
-    }
-    return acc;
-  }, []).map(function(opts) {
-    var project = new Project;
-    project.category = opts;
-    return project;
-  }).map(function(filterOption) {
-    $('#filter').append(filterOption.toFilter());
+    if($('#filter option[value="' + project.category + '"]').length === 0) {
+      $('#filter').append(project.toFilter());
+    };
   });
 
   projectView.handleNav();
