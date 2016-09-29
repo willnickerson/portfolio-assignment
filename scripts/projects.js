@@ -11,17 +11,10 @@ function Project(opts) {
 
 Project.all = [];
 
-//This function will take a Project object, convert it to Html using handlebars so that it can be appened to the projects section of our page.
+//This function will take a Project object, convert it to Html using handlebars so that it can be appened to a specified section of our page.
 
-Project.prototype.toHtml = function () {
-  var source = $('#project-template').html();
-  var template = Handlebars.compile(source);
-  var html = template(this);
-  return html;
-};
-
-Project.prototype.toFilter = function() {
-  var source = $('#filter-options').html();
+Project.prototype.toHtml = function(templateId) {
+  var source = $(templateId).html();
   var template = Handlebars.compile(source);
   var html = template(this);
   return html;

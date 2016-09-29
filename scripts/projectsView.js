@@ -7,9 +7,14 @@ projectView.handleNav = function() {
   $('nav').on('click', '.nav-tab', function(){
     var $selectedContent = $(this).attr('data-type');
     console.log($selectedContent);
-    $('.main-content').hide();
-    $('.hero').slideUp('slow');
-    $('#' + $selectedContent).show();
+    if($selectedContent === 'home') {
+      $('.hero').slideDown('slow');
+      $('.main-content').show();
+    } else {
+      $('.main-content').hide();
+      $('.hero').slideUp('slow');
+      $('#' + $selectedContent).show();
+    }
   });
 };
 
@@ -20,7 +25,7 @@ projectView.handleFilter = function() {
       $('article[data-category="' + $(this).val() + '"]').fadeIn(500);
     } else {
       // TODO: Check why fadeOut seems to be skipped
-      $('.project-article').fadeOut(500).fadeIn(500);
+      $('.project-article').fadeOut(500).fadeIn(1000);
     }
   });
 };
@@ -51,29 +56,10 @@ projectView.preview = function() {
 projectView.renderToIndex = function() {
   //taking the elements from our newly populated Project.all array and converting them to html and appending them to the section with id="projects"
 
-  // Project.all.forEach(function(project){
-  //   $('#projects').append(project.toHtml());
-  // });
-  //
-  // // Loading filter option to filter. This really looks like a huge mess in comparison to the last version but it makes use of the functional array methods
-  // Project.all.map(function(project) {
-  //   return project.category;
-  // }).reduce(function(acc, curr) {
-  //   if(acc.indexOf(curr) === -1) {
-  //     acc[acc.length] = curr;
-  //   }
-  //   return acc;
-  // }, []).map(function(opts) {
-  //   var project = new Project;
-  //   project.category = opts;
-  //   return project;
-  // }).map(function(filterOption) {
-  //   $('#filter').append(filterOption.toFilter());
-  // });
   Project.all.forEach(function(project){
-    $('#projects').append(project.toHtml());
+    $('#projects').append(project.toHtml('#project-template'));
     if($('#filter option[value="' + project.category + '"]').length === 0) {
-      $('#filter').append(project.toFilter());
+      $('#filter').append(project.toHtml('#filter-options'));
     };
   });
 
