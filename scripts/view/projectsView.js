@@ -6,6 +6,7 @@ var projectView = {};
 projectView.handleNav = function() {
   $('nav').on('click', '.nav-tab', function(){
     var $selectedContent = $(this).attr('data-type');
+    console.log($selectedContent);
     if($selectedContent === 'home') {
       $('.hero').slideDown('slow');
       $('.main-content').show();
@@ -17,6 +18,15 @@ projectView.handleNav = function() {
   });
 };
 
+// projectView.hamburgerHover = function() {
+//   $('nav').on('click', function () {
+//     $('nav ul').slideDown('slow');
+//   });
+//   $('nav').on('mouseout', function() {
+//     $('nav ul').slideUp('slow');
+//   });
+// };
+
 projectView.handleFilter = function() {
   $('#filter').on('change', function() {
     if($(this).val()) {
@@ -24,7 +34,8 @@ projectView.handleFilter = function() {
       $('article[data-category="' + $(this).val() + '"]').fadeIn(500);
     } else {
       // TODO: Check why fadeOut seems to be skipped
-      $('.project-article').fadeOut(500).fadeIn(1000);
+      $('.project-article').fadeOut(500);
+      $('.project-article').fadeIn(500);
     }
   });
 };
@@ -58,7 +69,6 @@ projectView.renderToIndex = function() {
       $('#filter').append(project.toHtml('#filter-options'));
     };
   });
-
   projectView.handleNav();
   projectView.handleFilter();
   projectView.preview();
