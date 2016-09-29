@@ -6,7 +6,6 @@ var projectView = {};
 projectView.handleNav = function() {
   $('nav').on('click', '.nav-tab', function(){
     var $selectedContent = $(this).attr('data-type');
-    console.log($selectedContent);
     if($selectedContent === 'home') {
       $('.hero').slideDown('slow');
       $('.main-content').show();
@@ -36,16 +35,13 @@ projectView.preview = function() {
   $('a[type="expand"]').on('click', function(e) {
     e.preventDefault();
     if($(this).is('.read-more')) {
-      $(this).prev().find('p').show();
-      console.log('test');
+      $(this).prev().find('p').show(350);
       $(this).text('Show less');
       $(this).removeClass('read-more');
       // $(this).addClass('show-less');
     } else {
-      console.log('will show less');
       var $selectedParagraphs = $(this).prev().find('p:gt(0)');
-      console.log($selectedParagraphs);
-      $selectedParagraphs.hide();
+      $selectedParagraphs.hide(350);
       $(this).text('Read-more');
       $(this).addClass('read-more');
     }
@@ -68,5 +64,5 @@ projectView.renderToIndex = function() {
   projectView.preview();
 };
 
-//We will asynchronously render all the articles to index by calling the retrieveAll function here.
-Project.retrieveAll();
+//We will asynchronously render all the articles to index by calling the retrieveAll function here and passing it the render to index function.
+Project.retrieveAll(projectView.renderToIndex);
