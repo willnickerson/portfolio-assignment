@@ -5,11 +5,12 @@
 
 header {
   clear: both;
+  height: auto;
 }
 
 .title {
   display: inline-block;
-  width: 70%;
+  width: 85%;
   float: left;
 }
 
