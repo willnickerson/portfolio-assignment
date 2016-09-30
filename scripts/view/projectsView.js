@@ -18,14 +18,19 @@
     });
   };
 
-  // projectView.hamburgerHover = function() {
-  //   $('nav').on('click', function () {
-  //     $('nav ul').slideDown('slow');
-  //   });
-  //   $('nav').on('mouseout', function() {
-  //     $('nav ul').slideUp('slow');
-  //   });
-  // };
+  projectView.hamburgerHover = function() {
+    if($(window).width() < 640) {
+      $('.icon-menu').on('click', function () {
+        $('nav ul').slideDown('slow');
+      });
+      $('main').on('mouseover', function() {
+        $('nav ul').slideUp('slow');
+      });
+      $('nav li').on('click', function() {
+        $('nav ul').slideUp('slow');
+      });
+    }
+  };
 
   projectView.handleFilter = function() {
     $('#filter').on('change', function() {
@@ -70,6 +75,7 @@
       };
     });
     projectView.handleNav();
+    projectView.hamburgerHover();
     projectView.handleFilter();
     projectView.preview();
   };

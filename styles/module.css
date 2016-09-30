@@ -16,9 +16,9 @@ nav ul {
   margin: 0;
 }
 
-nav:hover ul {
+/*nav:hover ul {
   display: block;
-}
+}*/
 
 nav ul li {
   margin-left: 6%;

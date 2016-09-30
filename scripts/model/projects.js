@@ -66,14 +66,14 @@
       success: successHandler,
       error: errorHandler
     });
-    function successHandler(data, textStatus, request) {
+    function successHandler(data, textStatus, xhr) {
       //take the data from json file and load to Project.all
       Project.loadAll(data);
       //stringify data from JSON file and add to local storage
       var projectsString = JSON.stringify(data);
       localStorage.setItem('projects', projectsString);
       // addapted from http://stackoverflow.com/questions/1557602/jquery-and-ajax-response-header
-      var eTag = request.getResponseHeader('Etag');
+      var eTag = xhr.getResponseHeader('Etag');
       localStorage.setItem('eTag', eTag);
       //render to index
       nextFunction();
@@ -82,6 +82,6 @@
       console.log('ERROR', error);
     };
   };
-  
+
   module.Project = Project;
 })(window);
