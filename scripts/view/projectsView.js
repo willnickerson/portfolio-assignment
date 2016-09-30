@@ -11,9 +11,9 @@
         $('.hero').slideDown('slow');
         $('.main-content').show();
       } else {
-        $('.main-content').slideUp('slow');
+        $('.main-content').fadeOut();
         $('.hero').slideUp('slow');
-        $('#' + $selectedContent).slideDown(1000);
+        $('#' + $selectedContent).slideDown('slow');
       }
     });
   };
