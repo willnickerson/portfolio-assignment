@@ -21,7 +21,7 @@
   projectView.hamburgerHover = function() {
     if($(window).width() < 640) {
       $('.icon-menu').on('click', function () {
-        $('nav ul').slideDown('slow');
+        $('nav ul').slideToggle('slow');
       });
       $('main').on('mouseover', function() {
         $('nav ul').slideUp('slow');
@@ -50,18 +50,18 @@
     $('.project-description *:nth-of-type(n+2)').hide();
     $('a[type="expand"]').on('click', function(e) {
       e.preventDefault();
+      var $selectedParagraphs;
       if($(this).is('.read-more')) {
         $(this).prev().find('p').show(350);
         $(this).text('Show less');
         $(this).removeClass('read-more');
         // $(this).addClass('show-less');
       } else {
-        var $selectedParagraphs = $(this).prev().find('p:gt(0)');
+        $selectedParagraphs = $(this).prev().find('p:gt(0)');
         $selectedParagraphs.hide(350);
         $(this).text('Read-more');
         $(this).addClass('read-more');
       }
-    //TODO add code for show-less
     });
   };
 
