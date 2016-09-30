@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="vendor/styles/normalize.css">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/module.css">
@@ -43,12 +43,12 @@
           <div class="icon-menu">
           </div>
           <ul>
-            <li class="nav-tab" data-type="projects"><a href="#">Projects</a></li>
-            <li class="nav-tab" data-type="about"><a href="#">About</a></li>
-            <!-- TODO Icomoon is overwriting the sans-serif fonts -->
-            <li class="nav-link"><a href="https://github.com/willnickerson" class="icon-github">&nbsp;Github</a></li>
-            <li class="nav-link"><a href="https://www.linkedin.com/in/william-nickerson-439976103?trk=hp-identity-name" class="icon-linkedin">&nbsp;Linkedin</a></li>
-            <li class="nav-link"><a href="https://soundcloud.com/will_pancake" class="icon-soundcloud">&nbsp;Soundcloud</a></li>
+            <li class="nav-tab" data-type="home"><a class="icon-home" href="#">&nbsp;Home</a></li>
+            <li class="nav-tab" data-type="projects"><a class="icon-pencil2" href="#">&nbsp;Projects</a></li>
+            <li class="nav-tab" data-type="about"><a class="icon-user" href="#">&nbsp;About</a></li>
+            <li class="nav-link"><a class="icon-github" href="https://github.com/willnickerson" class="icon-github">&nbsp;Github</a></li>
+            <li><a class="icon-linkedin2" href="https://www.linkedin.com/in/william-nickerson-439976103?trk=hp-identity-name">&nbsp;Linkedin</a></li>
+            <li><a class="icon-soundcloud" href="https://soundcloud.com/will_pancake">&nbsp;Soundcloud</a></li>
           </ul>
         </nav>
       </header>
@@ -68,8 +68,7 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
     <script type="text/javascript" src="vendor/scripts/jquery-3.1.0.js"></script>
-    <script type="text/javascript" src="scripts/projectsSource.js"></script>
-    <script type="text/javascript" src="scripts/projects.js"></script>
-    <script type="text/javascript" src="scripts/projectsView.js"></script>
+    <script type="text/javascript" src="scripts/model/projects.js"></script>
+    <script type="text/javascript" src="scripts/view/projectsView.js"></script>
   </body>
 </html>
