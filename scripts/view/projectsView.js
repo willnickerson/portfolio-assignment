@@ -11,9 +11,9 @@ projectView.handleNav = function() {
       $('.hero').slideDown('slow');
       $('.main-content').show();
     } else {
-      $('.main-content').hide();
+      $('.main-content').slideUp('slow');
       $('.hero').slideUp('slow');
-      $('#' + $selectedContent).show();
+      $('#' + $selectedContent).slideDown(1000);
     }
   });
 };
@@ -35,7 +35,7 @@ projectView.handleFilter = function() {
     } else {
       // TODO: Check why fadeOut seems to be skipped
       $('.project-article').fadeOut(500);
-      $('.project-article').fadeIn(500);
+      $('.project-article').fadeIn(1000);
     }
   });
 };
