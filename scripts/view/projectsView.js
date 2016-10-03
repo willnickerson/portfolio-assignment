@@ -2,22 +2,6 @@
 (function(module) {
   var projectView = {};
 
-  //this takes user to part of desired part of the page via the nav bar
-  projectView.handleNav = function() {
-    $('nav').on('click', '.nav-tab', function(){
-      var $selectedContent = $(this).attr('data-type');
-      console.log($selectedContent);
-      if($selectedContent === 'home') {
-        $('.hero').slideDown('slow');
-        $('.main-content').show();
-      } else {
-        $('.main-content').fadeOut();
-        $('.hero').slideUp('slow');
-        $('#' + $selectedContent).slideDown('slow');
-      }
-    });
-  };
-
   projectView.hamburgerHover = function() {
     if($(window).width() < 640) {
       $('.icon-menu').on('click', function () {
@@ -74,7 +58,6 @@
         $('#filter').append(project.toHtml('#filter-options'));
       };
     });
-    projectView.handleNav();
     projectView.hamburgerHover();
     projectView.handleFilter();
     projectView.preview();
