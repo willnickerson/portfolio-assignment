@@ -30,6 +30,11 @@
     <script id="filter-options" type="text/x-handlebars-template">
       <option value="{{category}}">{{category}}</option>
     </script>
+    <script id="repo-template" type="text/x-handlebars-template">
+      <h4><a href="{{html_url}}">{{name}}</a></h4>
+      <h5><a href="{{contributors_url}}">Contributors</a></h5>
+      <p class="repo-description">{{description}}</p>
+    </script>
   </head>
 
   <body>
@@ -63,14 +68,27 @@
         <section id="about" class="main-content">
           <h2>About</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+          <h2>My Github Projects</h2>
+          <ul>
+
+          </ul>
         </section>
       </main>
     </div>
+    <!-- token -->
+    <script src="githubToken.js"></script>
+    <!-- vendor scripts -->
     <script src="vendor/scripts/page.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
     <script type="text/javascript" src="vendor/scripts/jquery-3.1.0.js"></script>
+    <!-- model scripts -->
     <script type="text/javascript" src="scripts/model/projects.js"></script>
+    <script type="text/javascript" src="scripts/model/repo.js"></script>
+    <!-- view scripts -->
     <script type="text/javascript" src="scripts/view/projectsView.js"></script>
+    <script type="text/javascript" src="scripts/view/repoView.js"></script>
+    <!-- controller scripts -->
     <script type="text/javascript" src="scripts/controllers/aboutController.js"></script>
     <script type="text/javascript" src="scripts/controllers/homeController.js"></script>
     <script type="text/javascript" src="scripts/controllers/projectsController.js"></script>
