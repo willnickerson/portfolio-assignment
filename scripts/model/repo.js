@@ -6,9 +6,9 @@
     $.ajax({
       url: 'https://api.github.com/users/willnickerson/repos',
       method: 'GET',
-      headers: {
-        Authorization: 'token ' + token,
-      },
+      // headers: {
+      //   Authorization: 'token ' + token,
+      // },
       success: successHandler,
       error: errorHandler
     });
