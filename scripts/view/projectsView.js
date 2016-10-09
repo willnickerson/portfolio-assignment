@@ -1,7 +1,7 @@
 'use strict';
 (function(module) {
   var projectView = {};
-
+  
   projectView.hamburgerHover = function() {
     if($(window).width() < 640) {
       $('.icon-menu').on('click', function () {
