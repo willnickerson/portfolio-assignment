@@ -24,6 +24,7 @@
           </section>
         <a class="read-more" href="#" type="expand">Read more &rarr;</a>
       </article>
+
     </script>
 
     <!-- template for filter menu -->
@@ -31,9 +32,10 @@
       <option value="{{category}}">{{category}}</option>
     </script>
     <script id="repo-template" type="text/x-handlebars-template">
-      <h4><a href="{{html_url}}">{{name}}</a></h4>
-      <h5>Created on: {{created_at}}</h5>
-      <p class="repo-description">{{description}}</p>
+      <li class="repo">
+        <h4><a href="{{html_url}}">{{name}}</a></h4>
+        <h5>Created on: {{created_at}}</h5>
+      <li>
     </script>
   </head>
 
@@ -70,7 +72,7 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
           <h2>My Github Projects</h2>
-          <ul>
+          <ul id="repo-list">
 
           </ul>
         </section>

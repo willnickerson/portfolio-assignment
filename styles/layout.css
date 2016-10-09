@@ -30,3 +30,11 @@ img.project-img {
   display: table;
   clear: both;
 }
+
+.repo {
+  margin-bottom: 1.5em;
+}
+
+#repo-list {
+  list-style-type: none;
+}
